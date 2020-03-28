@@ -35,8 +35,6 @@ public class DetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int position = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0);
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-
         final Restaurant restaurant = Restaurant.getRestaurants().get(position);
 
         vPictureDetail.setImageResource(restaurant.getPicture());
