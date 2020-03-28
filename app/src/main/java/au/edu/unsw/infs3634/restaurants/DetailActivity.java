@@ -28,10 +28,6 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        vName = findViewById(R.id.restaurantName);
-        //vSymbol = findViewById(R.id.symbol);
-        vCuisine = findViewById(R.id.restaurantCuisine);
-        vLocation = findViewById(R.id.restaurantLocation);
         vDescription = findViewById(R.id.descriptionText);
         vAverageCost = findViewById(R.id.averageCostAmount);
         vRating = findViewById(R.id.ratingScore);
@@ -43,9 +39,6 @@ public class DetailActivity extends AppCompatActivity {
 
         final Restaurant restaurant = Restaurant.getRestaurants().get(position);
 
-        vName.setText(restaurant.getName());
-        vCuisine.setText(restaurant.getCuisine());
-        vLocation.setText(restaurant.getLocation());
         vDescription.setText(restaurant.getDescription());
         vAverageCost.setText(formatter.format(restaurant.getAverageCost()));
         vRating.setText(formatter.format(restaurant.getRating()));
