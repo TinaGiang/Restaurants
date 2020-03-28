@@ -1,16 +1,13 @@
 package au.edu.unsw.infs3634.restaurants;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
@@ -27,16 +24,19 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     }
 
     public static class RestaurantViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView name, cuisine, location;
+        public ImageView picture;
+        public TextView name, cuisine, location, ratingScore;
         private RecyclerViewClickListener vListener;
 
         public RestaurantViewHolder(View v, RecyclerViewClickListener listener) {
             super(v);
             vListener = listener;
             v.setOnClickListener(this);
+            picture = v.findViewById(R.id.pictureList);
             name = v.findViewById(R.id.restaurantName);
             cuisine = v.findViewById(R.id.restaurantCuisine);
             location = v.findViewById(R.id.restaurantLocation);
+            ratingScore = v.findViewById(R.id.ratingScore);
         }
         @Override
         public void onClick(View v) {
@@ -54,9 +54,11 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     @Override
     public void onBindViewHolder(RestaurantViewHolder holder, int position) {
         Restaurant restaurant = vRestaurants.get(position);
+        holder.picture.setImageResource(restaurant.getPicture());
         holder.name.setText(restaurant.getName());
         holder.cuisine.setText(restaurant.getCuisine());
         holder.location.setText(restaurant.getLocation());
+        holder.ratingScore.setText(restaurant.getRating());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

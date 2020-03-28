@@ -12,14 +12,13 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/pictureList"
             android:layout_width="84dp"
             android:layout_height="87dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@mipmap/ic_launcher"
-            app:layout_constraintStart_toStartOf="parent" />
+            tools:layout_editor_absoluteY="0dp" />
 
         <TextView
             android:id="@+id/restaurantName"
@@ -29,8 +28,8 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="13dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintStart_toEndOf="@+id/pictureList"
+            app:layout_constraintTop_toTopOf="@+id/pictureList" />
 
         <TextView
             android:id="@+id/restaurantCuisine"
@@ -45,6 +44,27 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/restaurantCuisine"
             app:layout_constraintTop_toBottomOf="@+id/restaurantCuisine" />
+
+        <TextView
+            android:id="@+id/ratingScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/green_star" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

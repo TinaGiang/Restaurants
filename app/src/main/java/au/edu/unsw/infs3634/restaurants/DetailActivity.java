@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,14 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.NumberFormat;
 
 public class DetailActivity extends AppCompatActivity {
-    private TextView vName;
-    private TextView vSymbol;
-    private TextView vCuisine;
-    private TextView vLocation;
+
+    private ImageView vPictureDetail;
+    private TextView vResName;
     private TextView vDescription;
     private TextView vAverageCost;
-    private TextView vRating;
-    private Button vSearch;
+    private TextView vThoughts;
 
     private static final String TAG = "DetailActivity";
 
@@ -28,10 +27,11 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        vResName = findViewById(R.id.resName);
+        vPictureDetail = findViewById(R.id.pictureDetail);
         vDescription = findViewById(R.id.descriptionText);
         vAverageCost = findViewById(R.id.averageCostAmount);
-        vRating = findViewById(R.id.ratingScore);
-        vSearch = findViewById(R.id.searchButton);
+        vThoughts = findViewById(R.id.thoughtsText);
 
         Intent intent = getIntent();
         int position = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0);
@@ -39,55 +39,14 @@ public class DetailActivity extends AppCompatActivity {
 
         final Restaurant restaurant = Restaurant.getRestaurants().get(position);
 
+        vPictureDetail.setImageResource(restaurant.getPicture());
+        vResName.setText(restaurant.getName());
         vDescription.setText(restaurant.getDescription());
-        vAverageCost.setText(formatter.format(restaurant.getAverageCost()));
-        vRating.setText(formatter.format(restaurant.getRating()));
-
-        vSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchRestaurant(restaurant.getName());
-            }
-        });
-
-    }
-
-    private void searchRestaurant(String name) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + name));
-        startActivity(intent);
+        vAverageCost.setText(restaurant.getAverageCost());
+        vThoughts.setText(restaurant.getThoughts());
     }
 }
 
-    /*private TextView vName;
-    private TextView vCuisine;
-    private TextView vLocation;
-
-    private static final String TAG = "DetailActivity";
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-
-        vName = findViewById(R.id.restaurantName);
-        vCuisine = findViewById(R.id.restaurantCuisine);
-        vLocation = findViewById(R.id.restaurantLocation);
-
-        Intent intent = getIntent();
-        int position = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0);
-
-        final Restaurant restaurant = Restaurant.getRestaurants().get(position);
-
-        vName.setText(restaurant.getName());
-        vCuisine.setText(restaurant.getCuisine());
-        vLocation.setText(restaurant.getLocation());*/
-
-        /*mSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchCoin(coin.getName());
-            }
-        });*/
 
 
 
