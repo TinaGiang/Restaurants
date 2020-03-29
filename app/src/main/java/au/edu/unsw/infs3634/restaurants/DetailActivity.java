@@ -1,16 +1,11 @@
 package au.edu.unsw.infs3634.restaurants;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.text.NumberFormat;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -21,6 +16,9 @@ public class DetailActivity extends AppCompatActivity {
     private TextView vThoughts;
 
     private static final String TAG = "DetailActivity";
+
+    // This method provides a link to the activity_detail XML file
+    // The Intent object is retrieved and getter methods are used to pull data from Restaurant
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+// The Adapter connects the Restaurant data set to the RecyclerView
+
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
     private ArrayList<Restaurant> vRestaurants;
     private RecyclerViewClickListener vListener;
@@ -22,6 +24,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         vRestaurants = restaurants;
         vListener = listener;
     }
+
+    // This shows how data is taken from the adapter view and used by the RecyclerView
 
     public static class RestaurantViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView picture;
@@ -44,13 +48,16 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         }
     }
 
+    // This method inflates restaurant_list_row.xml for the data
+    // It gets the XML and converts it into Java code
+
     @Override
     public RestaurantAdapter.RestaurantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_list_row, parent, false);
         return new RestaurantViewHolder(v, vListener);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    // This method pulls data from Restaurant and fills in the contents on the screen
     @Override
     public void onBindViewHolder(RestaurantViewHolder holder, int position) {
         Restaurant restaurant = vRestaurants.get(position);
@@ -61,7 +68,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         holder.ratingScore.setText(restaurant.getRating());
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+    // This method returns the size of Restaurant
     @Override
     public int getItemCount() {
         return vRestaurants.size();

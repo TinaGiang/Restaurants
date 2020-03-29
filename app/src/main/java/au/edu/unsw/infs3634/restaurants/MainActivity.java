@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView vRecyclerView;
     private RecyclerView.Adapter vAdapter;
     private RecyclerView.LayoutManager vLayoutManager;
+
+    // This method is where the activity is initialised
+    // The RecyclerView is instantiated and it declares what happens when an item in the RecyclerView is clicked on
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,38 +41,13 @@ public class MainActivity extends AppCompatActivity {
         vRecyclerView.setAdapter(vAdapter);
     }
 
+    // This method starts a new instance of an activity by passing the intent to start the activity
+    // It links to the DetailActivity class
+
     private void launchDetailActivity(int position) {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(EXTRA_MESSAGE, position);
         startActivity(intent);
     }
-
-    private void launchDetailActivity(String message) {
-        Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
-
 }
 
-/*RestaurantAdapter.RecyclerViewClickListener listener = new RestaurantAdapter.RecyclerViewClickListener() {
-            @Override
-            public void onClick(View v, int position) {
-                Restaurant item = Restaurant.getRestaurants().get(position);
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class); //need to specify parent view group
-                intent.putExtra(DetailFragment.ID_DESC, item.getDescription());
-                intent.putExtra(DetailFragment.ID_AVG, item.getAverageCost());
-                intent.putExtra(DetailFragment.ID_RATING, item.getRating());
-                startActivity(intent);
-            }
-        };*/
-
-//RecyclerView recyclerView = findViewById(R.id.resList);
-//recyclerView.setAdapter(new RestaurantAdapter(Restaurant.getRestaurants(), listener));
-
-        /*RecyclerView mRecyclerView = findViewById(R.id.resList);
-        mRecyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager vLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(vLayoutManager);
-        RecyclerView.Adapter mAdapter = new RestaurantAdapter(this, Restaurant.getRestaurants());
-        mRecyclerView.setAdapter(mAdapter);*/

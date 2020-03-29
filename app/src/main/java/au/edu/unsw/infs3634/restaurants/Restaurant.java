@@ -1,8 +1,8 @@
 package au.edu.unsw.infs3634.restaurants;
 
-import android.widget.ImageView;
-
 import java.util.ArrayList;
+
+// Declaring variables to be used in the Restaurant class
 
 public class Restaurant {
 
@@ -18,6 +18,8 @@ public class Restaurant {
     public Restaurant(){
     }
 
+    // Constructor initialising the Restaurant object
+
     public Restaurant(int picture, String name, String cuisine, String location,
                       String description, String averageCost, String rating, String thoughts){
         this.picture = picture;
@@ -29,6 +31,9 @@ public class Restaurant {
         this.rating = rating;
         this.thoughts = thoughts;
     }
+
+    // Getter and setter methods used to retrieve and update values of a variable
+    // They are used later on to display information in the app
 
     public int getPicture() {
         return picture;
@@ -94,6 +99,8 @@ public class Restaurant {
         this.thoughts = thoughts;
     }
 
+    // Declaring an ArrayList object to hold all the elements of Restaurant
+
        public static ArrayList<Restaurant> getRestaurants() {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         restaurants.add(new Restaurant(R.drawable.pic_1, "Don Peppino's", "Italian", "Paddington",
@@ -128,5 +135,4 @@ public class Restaurant {
                 "$35 p/p", "3.7", "'One of my absolutes faves! So so good.'"));
         return restaurants;
     }
-
 }
